@@ -1,0 +1,75 @@
+{
+  "dataset": {
+    "linhas_originais": 19735,
+    "linhas_modeladas": 19590,
+    "numero_features": 37,
+    "inicio": "2016-01-12 17:10:00",
+    "fim": "2016-05-27 18:00:00"
+  },
+  "divisao": {
+    "treino": 13713,
+    "validacao": 2938,
+    "teste": 2939
+  },
+  "melhor_modelo": {
+    "configuracao": "MLP_32",
+    "camadas": "(32,)",
+    "alpha": 0.0001,
+    "taxa": 0.001,
+    "semente": 42,
+    "melhor_epoca": 28,
+    "RMSE_validacao": 60.75460459343325,
+    "MAE_validacao": 29.434432294601756,
+    "R2_validacao": 0.5463923704186723
+  },
+  "metricas_teste_mlp": {
+    "MAE": 37.97517717737626,
+    "RMSE": 69.60680270879396,
+    "R2": 0.41458252719443056
+  },
+  "metricas_teste_persistencia": {
+    "MAE": 26.723375297720313,
+    "RMSE": 66.78593165400555,
+    "R2": 0.46107009021839784
+  },
+  "tempo_segundos": 9.240567799999553,
+  "features": [
+    "lights",
+    "T1",
+    "RH_1",
+    "T2",
+    "RH_2",
+    "T3",
+    "RH_3",
+    "T4",
+    "RH_4",
+    "T5",
+    "RH_5",
+    "T6",
+    "RH_6",
+    "T7",
+    "RH_7",
+    "T8",
+    "RH_8",
+    "T9",
+    "RH_9",
+    "T_out",
+    "Press_mm_hg",
+    "RH_out",
+    "Windspeed",
+    "Visibility",
+    "Tdewpoint",
+    "hora_sen",
+    "hora_cos",
+    "semana_sen",
+    "semana_cos",
+    "fim_de_semana",
+    "Appliances_lag_1",
+    "Appliances_lag_6",
+    "Appliances_lag_12",
+    "Appliances_lag_144",
+    "Appliances_media_1h",
+    "Appliances_media_6h",
+    "Appliances_atual"
+  ]
+}

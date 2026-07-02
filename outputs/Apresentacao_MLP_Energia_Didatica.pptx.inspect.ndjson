@@ -1,0 +1,306 @@
+{"kind":"deck","id":"pr/3edsvw","name":"Deck"}
+{"kind":"layout","layoutId":"95a00e76-4046-43ce-b099-82a1044a61f4","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"83966aa9-0105-4d9e-baea-f6f59d2d706f","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/r5y6so","slide":1,"title":"SÉRIES TEMPORAIS MULTIVARIADAS","textShapes":6}
+{"kind":"shape","id":"sh/at47y1kr","slide":1,"name":"accent","bbox":[0,0,18,720]}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":1,"name":"eyebrow","text":"SÉRIES TEMPORAIS MULTIVARIADAS","textPreview":"SÉRIES TEMPORAIS MULTIVARIADAS","textChars":30,"textLines":1,"bbox":[76,74,620,30]}
+{"kind":"textbox","id":"sh/szqtcj6t","slide":1,"name":"title","text":"Predição do consumo de energia com MLP","textPreview":"Predição do consumo de energia com MLP","textChars":38,"textLines":1,"bbox":[76,132,870,154]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":1,"name":"subtitle","text":"Reprodução adaptada de Candanedo, Feldheim e Deramaix (2017)","textPreview":"Reprodução adaptada de Candanedo, Feldheim e Deramaix (2017)","textChars":60,"textLines":1,"bbox":[78,310,850,62]}
+{"kind":"shape","id":"sh/ahoza1gv","slide":1,"name":"question","bbox":[78,438,860,112]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":1,"name":"question-text","text":"Pergunta central: quanto a residência consumirá nos próximos 10 minutos?","textPreview":"Pergunta central: quanto a residência consumirá nos próximos 10 minutos?","textChars":72,"textLines":1,"bbox":[112,456,790,74]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":1,"name":"meta","text":"Machine Learning • Ciência de Dados • Grupo B","textPreview":"Machine Learning • Ciência de Dados • Grupo B","textChars":45,"textLines":1,"bbox":[78,626,740,28]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":1,"name":"page","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1152,652,64,24]}
+{"kind":"notes","id":"nt/r5y6so","slide":1,"text":"Abra pela pergunta, não pelo algoritmo. Explique que o trabalho usa medições reais de uma casa para antecipar o próximo intervalo de consumo. Diga que se trata de uma reprodução adaptada: preservamos o problema e o dataset do artigo, mas aplicamos a técnica MLP exigida no Grupo B."}
+{"kind":"slide","id":"sl/7esum5","slide":2,"title":"VISÃO GERAL","textShapes":9}
+{"kind":"shape","id":"sh/4zidonyd","slide":2,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":2,"name":"kicker","text":"VISÃO GERAL","textPreview":"VISÃO GERAL","textChars":11,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":2,"name":"title","text":"Do que trata este trabalho?","textPreview":"Do que trata este trabalho?","textChars":27,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/xc3ylc7u","slide":2,"name":"statement","bbox":[64,150,1152,94]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":2,"name":"statement-text","text":"Transformar o histórico de sensores em uma previsão numérica do consumo futuro.","textPreview":"Transformar o histórico de sensores em uma previsão numérica do consumo futuro.","textChars":79,"textLines":1,"bbox":[96,166,1088,62]}
+{"kind":"shape","id":"sh/f6dcbulw","slide":2,"name":"bullet-0","bbox":[102,286,12,12]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":2,"name":"bullet-text-0","text":"Problema: regressão — prever uma quantidade contínua em Wh","textPreview":"Problema: regressão — prever uma quantidade contínua em Wh","textChars":58,"textLines":1,"bbox":[130,276,1022,44]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":2,"name":"bullet-1","bbox":[102,358,12,12]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":2,"name":"bullet-text-1","text":"Horizonte: um passo à frente, equivalente a 10 minutos","textPreview":"Horizonte: um passo à frente, equivalente a 10 minutos","textChars":54,"textLines":1,"bbox":[130,348,1022,44]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":2,"name":"bullet-2","bbox":[102,430,12,12]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":2,"name":"bullet-text-2","text":"Entradas: consumo recente, temperatura, umidade, iluminação e clima","textPreview":"Entradas: consumo recente, temperatura, umidade, iluminação e clima","textChars":67,"textLines":1,"bbox":[130,420,1022,44]}
+{"kind":"shape","id":"sh/oj2t83it","slide":2,"name":"bullet-3","bbox":[102,502,12,12]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":2,"name":"bullet-text-3","text":"Saída: um único valor previsto para Appliances","textPreview":"Saída: um único valor previsto para Appliances","textChars":46,"textLines":1,"bbox":[130,492,1022,44]}
+{"kind":"textbox","id":"sh/61032lsz","slide":2,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":2,"name":"page","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/7esum5","slide":2,"text":"Defina regressão com simplicidade: não estamos escolhendo uma classe, como ligado ou desligado; estamos estimando uma quantidade. Cada previsão responde quanto será consumido em Wh no próximo registro. Mostre que a análise conecta ambiente, hábitos e histórico recente."}
+{"kind":"slide","id":"sl/78nf53","slide":3,"title":"PROBLEMA APLICADO","textShapes":14}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":3,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":3,"name":"kicker","text":"PROBLEMA APLICADO","textPreview":"PROBLEMA APLICADO","textChars":17,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":3,"name":"title","text":"Por que prever consumo de energia?","textPreview":"Por que prever consumo de energia?","textChars":34,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":3,"name":"PLANEJAR-label","text":"PLANEJAR","textPreview":"PLANEJAR","textChars":8,"textLines":1,"bbox":[80,180,230,28]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":3,"name":"PLANEJAR-value","text":"demanda","textPreview":"demanda","textChars":7,"textLines":1,"bbox":[80,210,230,58]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":3,"name":"ANTECIPAR-label","text":"ANTECIPAR","textPreview":"ANTECIPAR","textChars":9,"textLines":1,"bbox":[355,180,230,28]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":3,"name":"ANTECIPAR-value","text":"picos","textPreview":"picos","textChars":5,"textLines":1,"bbox":[355,210,230,58]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":3,"name":"AUTOMATIZAR-label","text":"AUTOMATIZAR","textPreview":"AUTOMATIZAR","textChars":11,"textLines":1,"bbox":[630,180,230,28]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":3,"name":"AUTOMATIZAR-value","text":"decisões","textPreview":"decisões","textChars":8,"textLines":1,"bbox":[630,210,230,58]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":3,"name":"ECONOMIZAR-label","text":"ECONOMIZAR","textPreview":"ECONOMIZAR","textChars":10,"textLines":1,"bbox":[905,180,230,28]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":3,"name":"ECONOMIZAR-value","text":"recursos","textPreview":"recursos","textChars":8,"textLines":1,"bbox":[905,210,230,58]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":3,"name":"line","bbox":[80,302,1095,2]}
+{"kind":"textbox","id":"sh/cvixczed","slide":3,"name":"explain","text":"A previsão não economiza energia sozinha. Ela dá tempo para agir: deslocar cargas, emitir alertas ou ajustar sistemas antes que o consumo aconteça.","textPreview":"A previsão não economiza energia sozinha. Ela dá tempo para agir: deslocar cargas, emitir alertas ou ajustar sistemas antes que o consumo...","textChars":147,"textLines":1,"bbox":[118,354,1010,130]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":3,"name":"example","text":"Exemplo: se um pico é previsto, uma carga flexível pode ser programada para outro horário.","textPreview":"Exemplo: se um pico é previsto, uma carga flexível pode ser programada para outro horário.","textChars":90,"textLines":1,"bbox":[178,526,900,50]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":3,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/54zidony","slide":3,"name":"page","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/78nf53","slide":3,"text":"Evite prometer que o modelo gera economia automaticamente. A previsão é uma ferramenta de decisão. Use o exemplo de uma máquina de lavar ou aquecimento que pode ser deslocado para um horário de menor demanda."}
+{"kind":"slide","id":"sl/wmsw53","slide":4,"title":"BASE CIENTÍFICA","textShapes":14}
+{"kind":"shape","id":"sh/47y1kre1","slide":4,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":4,"name":"kicker","text":"BASE CIENTÍFICA","textPreview":"BASE CIENTÍFICA","textChars":15,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":4,"name":"title","text":"Artigo e dataset de referência","textPreview":"Artigo e dataset de referência","textChars":30,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":4,"name":"paper","bbox":[64,150,580,430]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":4,"name":"paper-title","text":"Data driven prediction models of energy use of appliances in a low-energy house","textPreview":"Data driven prediction models of energy use of appliances in a low-energy house","textChars":79,"textLines":1,"bbox":[96,180,510,110]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":4,"name":"authors","text":"Candanedo, Feldheim & Deramaix • 2017","textPreview":"Candanedo, Feldheim & Deramaix • 2017","textChars":37,"textLines":1,"bbox":[96,310,510,34]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":4,"name":"journal","text":"Energy and Buildings, v. 140, p. 81–97","textPreview":"Energy and Buildings, v. 140, p. 81–97","textChars":38,"textLines":1,"bbox":[96,360,510,32]}
+{"kind":"textbox","id":"sh/t83itgfm","slide":4,"name":"doi","text":"DOI 10.1016/j.enbuild.2017.01.083","textPreview":"DOI 10.1016/j.enbuild.2017.01.083","textChars":33,"textLines":1,"bbox":[96,404,510,28]}
+{"kind":"shape","id":"sh/4nap4r65","slide":4,"name":"adapt","bbox":[684,150,532,430]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":4,"name":"adapt-title","text":"O que reproduzimos?","textPreview":"O que reproduzimos?","textChars":19,"textLines":1,"bbox":[724,184,452,40]}
+{"kind":"shape","id":"sh/judg7ads","slide":4,"name":"bullet-0","bbox":[726,260,12,12]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":4,"name":"bullet-text-0","text":"Mesmo problema de energia","textPreview":"Mesmo problema de energia","textChars":25,"textLines":1,"bbox":[754,250,412,44]}
+{"kind":"shape","id":"sh/1032lszq","slide":4,"name":"bullet-1","bbox":[726,326,12,12]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":4,"name":"bullet-text-1","text":"Mesmo dataset e variável-alvo","textPreview":"Mesmo dataset e variável-alvo","textChars":29,"textLines":1,"bbox":[754,316,412,44]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":4,"name":"bullet-2","bbox":[726,392,12,12]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":4,"name":"bullet-text-2","text":"Métricas de regressão comparáveis","textPreview":"Métricas de regressão comparáveis","textChars":33,"textLines":1,"bbox":[754,382,412,44]}
+{"kind":"shape","id":"sh/1orytsvu","slide":4,"name":"bullet-3","bbox":[726,458,12,12]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":4,"name":"bullet-text-3","text":"Adaptação: MLP e divisão temporal","textPreview":"Adaptação: MLP e divisão temporal","textChars":33,"textLines":1,"bbox":[754,448,412,44]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":4,"name":"caution","text":"A MLP não foi o modelo central do artigo original.","textPreview":"A MLP não foi o modelo central do artigo original.","textChars":50,"textLines":1,"bbox":[724,526,452,36]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":4,"name":"source","text":"Fontes: Candanedo et al. (2017); UCI Appliances Energy Prediction","textPreview":"Fontes: Candanedo et al. (2017); UCI Appliances Energy Prediction","textChars":65,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":4,"name":"page","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/wmsw53","slide":4,"text":"Seja preciso: o artigo original comparou modelos como regressão linear, SVR, random forest e gradient boosting. Nossa proposta não é uma réplica literal dos números; é uma reprodução adaptada do problema para a técnica MLP. Essa transparência fortalece o trabalho."}
+{"kind":"slide","id":"sl/ho8klo","slide":5,"title":"DADOS","textShapes":13}
+{"kind":"shape","id":"sh/5kb6xkf6","slide":5,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":5,"name":"kicker","text":"DADOS","textPreview":"DADOS","textChars":5,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":5,"name":"title","text":"Como o dataset está organizado?","textPreview":"Como o dataset está organizado?","textChars":31,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/cbulwval","slide":5,"name":"big-number","bbox":[64,154,310,220]}
+{"kind":"textbox","id":"sh/5sneloj2","slide":5,"name":"n","text":"19.735","textPreview":"19.735","textChars":6,"textLines":1,"bbox":[90,180,258,76]}
+{"kind":"textbox","id":"sh/u54zidon","slide":5,"name":"nlabel","text":"registros cronológicos","textPreview":"registros cronológicos","textChars":22,"textLines":1,"bbox":[90,270,258,44]}
+{"kind":"shape","id":"sh/nqxs72x4","slide":5,"name":"frequency","bbox":[64,398,310,150]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":5,"name":"freq","text":"10 min","textPreview":"10 min","textChars":6,"textLines":1,"bbox":[90,414,258,58]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":5,"name":"freqlabel","text":"entre cada medição","textPreview":"entre cada medição","textChars":18,"textLines":1,"bbox":[90,476,258,34]}
+{"kind":"shape","id":"sh/54zidony","slide":5,"name":"bullet-0","bbox":[444,164,12,12]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":5,"name":"bullet-text-0","text":"Alvo: Appliances — consumo em Wh","textPreview":"Alvo: Appliances — consumo em Wh","textChars":32,"textLines":1,"bbox":[472,154,714,44]}
+{"kind":"shape","id":"sh/nyd0z610","slide":5,"name":"bullet-1","bbox":[444,238,12,12]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":5,"name":"bullet-text-1","text":"9 ambientes com temperatura e umidade","textPreview":"9 ambientes com temperatura e umidade","textChars":37,"textLines":1,"bbox":[472,228,714,44]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":5,"name":"bullet-2","bbox":[444,312,12,12]}
+{"kind":"textbox","id":"sh/cvixczed","slide":5,"name":"bullet-text-2","text":"Iluminação e condições meteorológicas externas","textPreview":"Iluminação e condições meteorológicas externas","textChars":46,"textLines":1,"bbox":[472,302,714,44]}
+{"kind":"shape","id":"sh/nap4r65w","slide":5,"name":"bullet-3","bbox":[444,386,12,12]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":5,"name":"bullet-text-3","text":"Período de aproximadamente 4,5 meses","textPreview":"Período de aproximadamente 4,5 meses","textChars":36,"textLines":1,"bbox":[472,376,714,44]}
+{"kind":"shape","id":"sh/1orytsvu","slide":5,"name":"bullet-4","bbox":[444,460,12,12]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":5,"name":"bullet-text-4","text":"Sem valores ausentes no arquivo original","textPreview":"Sem valores ausentes no arquivo original","textChars":40,"textLines":1,"bbox":[472,450,714,44]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":5,"name":"source","text":"Fonte: UCI Machine Learning Repository, dataset 374","textPreview":"Fonte: UCI Machine Learning Repository, dataset 374","textChars":51,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":5,"name":"page","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/ho8klo","slide":5,"text":"Explique que cada linha é um instante, não uma residência diferente. As 29 colunas originais incluem data, alvo, iluminação, sensores internos, clima e duas variáveis aleatórias. Reforce que os registros estão em ordem e cobrem uma única casa."}
+{"kind":"slide","id":"sl/9imsu5","slide":6,"title":"CONCEITO-CHAVE","textShapes":16}
+{"kind":"shape","id":"sh/2lszqtcj","slide":6,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/d8bat47y","slide":6,"name":"kicker","text":"CONCEITO-CHAVE","textPreview":"CONCEITO-CHAVE","textChars":14,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/knih4byh","slide":6,"name":"title","text":"O que é uma série temporal multivariada?","textPreview":"O que é uma série temporal multivariada?","textChars":40,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":6,"name":"temporal","text":"TEMPORAL","textPreview":"TEMPORAL","textChars":8,"textLines":1,"bbox":[90,164,270,36]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":6,"name":"temporal-desc","text":"A ordem importa. O passado vem antes do futuro.","textPreview":"A ordem importa. O passado vem antes do futuro.","textChars":47,"textLines":1,"bbox":[90,210,300,100]}
+{"kind":"textbox","id":"sh/d0z61032","slide":6,"name":"multi","text":"MULTIVARIADA","textPreview":"MULTIVARIADA","textChars":12,"textLines":1,"bbox":[490,164,300,36]}
+{"kind":"textbox","id":"sh/kf6dcbul","slide":6,"name":"multi-desc","text":"Várias medidas evoluem juntas no mesmo relógio.","textPreview":"Várias medidas evoluem juntas no mesmo relógio.","textChars":47,"textLines":1,"bbox":[490,210,300,100]}
+{"kind":"textbox","id":"sh/vixczed8","slide":6,"name":"forecast","text":"PREVISÃO","textPreview":"PREVISÃO","textChars":8,"textLines":1,"bbox":[900,164,250,36]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":6,"name":"forecast-desc","text":"Usamos contexto conhecido para estimar o próximo valor.","textPreview":"Usamos contexto conhecido para estimar o próximo valor.","textChars":55,"textLines":1,"bbox":[900,210,260,100]}
+{"kind":"shape","id":"sh/gfmlkjm1","slide":6,"name":"axis","bbox":[110,420,1030,4]}
+{"kind":"shape","id":"sh/90je9cvi","slide":6,"name":"tick0","bbox":[130,403,18,38]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":6,"name":"time0","text":"t − 40 min","textPreview":"t − 40 min","textChars":10,"textLines":1,"bbox":[76,456,126,32]}
+{"kind":"shape","id":"sh/rytsvu9k","slide":6,"name":"tick1","bbox":[375,403,18,38]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":6,"name":"time1","text":"t − 30 min","textPreview":"t − 30 min","textChars":10,"textLines":1,"bbox":[321,456,126,32]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":6,"name":"tick2","bbox":[620,403,18,38]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":6,"name":"time2","text":"t − 20 min","textPreview":"t − 20 min","textChars":10,"textLines":1,"bbox":[566,456,126,32]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":6,"name":"tick3","bbox":[865,403,18,38]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":6,"name":"time3","text":"t − 10 min","textPreview":"t − 10 min","textChars":10,"textLines":1,"bbox":[811,456,126,32]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":6,"name":"tick4","bbox":[1110,403,18,38]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":6,"name":"time4","text":"t + 10 min","textPreview":"t + 10 min","textChars":10,"textLines":1,"bbox":[1056,456,126,32]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":6,"name":"warning","text":"Não embaralhar: o futuro não pode ensinar o passado.","textPreview":"Não embaralhar: o futuro não pode ensinar o passado.","textChars":52,"textLines":1,"bbox":[250,548,780,52]}
+{"kind":"textbox","id":"sh/bulwval8","slide":6,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":6,"name":"page","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/9imsu5","slide":6,"text":"Use a linha do tempo. Temporal significa dependência e ordem. Multivariada significa que temos várias séries sincronizadas: consumo, temperatura, umidade e clima. Diga que uma divisão aleatória pode colocar maio no treino e fevereiro no teste, criando uma avaliação pouco realista."}
+{"kind":"slide","id":"sl/cxijx0","slide":7,"title":"ENGENHARIA DE ATRIBUTOS","textShapes":15}
+{"kind":"shape","id":"sh/6tovahoz","slide":7,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":7,"name":"kicker","text":"ENGENHARIA DE ATRIBUTOS","textPreview":"ENGENHARIA DE ATRIBUTOS","textChars":23,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":7,"name":"title","text":"Como transformamos tempo em entradas para a MLP?","textPreview":"Como transformamos tempo em entradas para a MLP?","textChars":48,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":7,"name":"left","bbox":[64,150,500,450]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":7,"name":"left-title","text":"Memória explícita","textPreview":"Memória explícita","textChars":17,"textLines":1,"bbox":[96,178,430,40]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":7,"name":"bullet-0","bbox":[100,252,12,12]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":7,"name":"bullet-text-0","text":"Consumo atual","textPreview":"Consumo atual","textChars":13,"textLines":1,"bbox":[128,242,392,44]}
+{"kind":"shape","id":"sh/vy90je9c","slide":7,"name":"bullet-1","bbox":[100,318,12,12]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":7,"name":"bullet-text-1","text":"Defasagem de 10 min","textPreview":"Defasagem de 10 min","textChars":19,"textLines":1,"bbox":[128,308,392,44]}
+{"kind":"shape","id":"sh/4zidonyd","slide":7,"name":"bullet-2","bbox":[100,384,12,12]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":7,"name":"bullet-text-2","text":"Defasagens de 1 h, 2 h e 24 h","textPreview":"Defasagens de 1 h, 2 h e 24 h","textChars":29,"textLines":1,"bbox":[128,374,392,44]}
+{"kind":"shape","id":"sh/mtwra5gb","slide":7,"name":"bullet-3","bbox":[100,450,12,12]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":7,"name":"bullet-text-3","text":"Médias móveis de 1 h e 6 h","textPreview":"Médias móveis de 1 h e 6 h","textChars":26,"textLines":1,"bbox":[128,440,392,44]}
+{"kind":"shape","id":"sh/4r65wjud","slide":7,"name":"right","bbox":[606,150,610,450]}
+{"kind":"textbox","id":"sh/xc3ylc7u","slide":7,"name":"right-title","text":"Contexto multivariado","textPreview":"Contexto multivariado","textChars":21,"textLines":1,"bbox":[642,178,530,40]}
+{"kind":"shape","id":"sh/mlkjm1cf","slide":7,"name":"bullet-0","bbox":[646,252,12,12]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":7,"name":"bullet-text-0","text":"Temperaturas e umidades internas","textPreview":"Temperaturas e umidades internas","textChars":32,"textLines":1,"bbox":[674,242,492,44]}
+{"kind":"shape","id":"sh/4fu18jqh","slide":7,"name":"bullet-1","bbox":[646,318,12,12]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":7,"name":"bullet-text-1","text":"Iluminação e clima externo","textPreview":"Iluminação e clima externo","textChars":26,"textLines":1,"bbox":[674,308,492,44]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":7,"name":"bullet-2","bbox":[646,384,12,12]}
+{"kind":"textbox","id":"sh/sji5snel","slide":7,"name":"bullet-text-2","text":"Hora e dia da semana em formato cíclico","textPreview":"Hora e dia da semana em formato cíclico","textChars":39,"textLines":1,"bbox":[674,374,492,44]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":7,"name":"bullet-3","bbox":[646,450,12,12]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":7,"name":"bullet-text-3","text":"Remoção de rv1 e rv2, variáveis aleatórias","textPreview":"Remoção de rv1 e rv2, variáveis aleatórias","textChars":42,"textLines":1,"bbox":[674,440,492,44]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":7,"name":"target","text":"Alvo = consumo no instante t + 10 minutos","textPreview":"Alvo = consumo no instante t + 10 minutos","textChars":41,"textLines":1,"bbox":[300,626,680,32]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":7,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":7,"name":"page","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/cxijx0","slide":7,"text":"A MLP é feedforward e não guarda memória como uma LSTM. Por isso construímos colunas que representam o passado. Explique defasagem com um exemplo: lag de 6 registros equivale a uma hora. Variáveis cíclicas evitam tratar 23h e 0h como horários distantes."}
+{"kind":"slide","id":"sl/rac617","slide":8,"title":"MLP","textShapes":15}
+{"kind":"shape","id":"sh/u18jqh0f","slide":8,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":8,"name":"kicker","text":"MLP","textPreview":"MLP","textChars":3,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":8,"name":"title","text":"O que é um Perceptron de Múltiplas Camadas?","textPreview":"O que é um Perceptron de Múltiplas Camadas?","textChars":43,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"textbox","id":"sh/judg7ads","slide":8,"name":"definition","text":"Uma rede neural feedforward que aprende uma função não linear entre entradas e saída.","textPreview":"Uma rede neural feedforward que aprende uma função não linear entre entradas e saída.","textChars":85,"textLines":1,"bbox":[150,138,980,60]}
+{"kind":"shape","id":"sh/u9knih4b","slide":8,"name":"connector0","bbox":[330,350,140,4]}
+{"kind":"shape","id":"sh/1032lszq","slide":8,"name":"connector1","bbox":[595,350,140,4]}
+{"kind":"shape","id":"sh/cfa9w3m9","slide":8,"name":"connector2","bbox":[860,350,140,4]}
+{"kind":"shape","id":"sh/nyd0z610","slide":8,"name":"node0","bbox":[180,280,150,145]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":8,"name":"node-text0","text":"Entradas","textPreview":"Entradas","textChars":8,"textLines":1,"bbox":[190,302,130,42]}
+{"kind":"textbox","id":"sh/czed8v6p","slide":8,"name":"node-sub0","text":"37 variáveis","textPreview":"37 variáveis","textChars":12,"textLines":1,"bbox":[190,354,130,38]}
+{"kind":"shape","id":"sh/5kb6xkf6","slide":8,"name":"node1","bbox":[470,280,170,145]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":8,"name":"node-text1","text":"Camada oculta","textPreview":"Camada oculta","textChars":13,"textLines":1,"bbox":[480,302,150,42]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":8,"name":"node-sub1","text":"neurônios + ReLU","textPreview":"neurônios + ReLU","textChars":16,"textLines":1,"bbox":[480,354,150,38]}
+{"kind":"shape","id":"sh/cbulwval","slide":8,"name":"node2","bbox":[735,280,170,145]}
+{"kind":"textbox","id":"sh/5sneloj2","slide":8,"name":"node-text2","text":"Camada oculta","textPreview":"Camada oculta","textChars":13,"textLines":1,"bbox":[745,302,150,42]}
+{"kind":"textbox","id":"sh/u54zidon","slide":8,"name":"node-sub2","text":"neurônios + ReLU","textPreview":"neurônios + ReLU","textChars":16,"textLines":1,"bbox":[745,354,150,38]}
+{"kind":"shape","id":"sh/nqxs72x4","slide":8,"name":"node3","bbox":[1000,280,170,145]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":8,"name":"node-text3","text":"Saída","textPreview":"Saída","textChars":5,"textLines":1,"bbox":[1010,302,150,42]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":8,"name":"node-sub3","text":"1 previsão","textPreview":"1 previsão","textChars":10,"textLines":1,"bbox":[1010,354,150,38]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":8,"name":"math","text":"neurônio: soma ponderada → ativação → informação para a próxima camada","textPreview":"neurônio: soma ponderada → ativação → informação para a próxima camada","textChars":70,"textLines":1,"bbox":[180,492,920,46]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":8,"name":"learning","text":"Treinar = ajustar pesos para reduzir o erro entre real e previsto.","textPreview":"Treinar = ajustar pesos para reduzir o erro entre real e previsto.","textChars":66,"textLines":1,"bbox":[210,552,860,44]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":8,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":8,"name":"page","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/rac617","slide":8,"text":"Apresente a rede da esquerda para a direita. Cada entrada é uma variável padronizada. Cada neurônio multiplica entradas por pesos, soma um viés e aplica ReLU. As camadas ocultas aprendem combinações não lineares. A saída possui um neurônio porque queremos um único número. Backpropagation calcula como cada peso contribuiu para o erro; Adam atualiza esses pesos."}
+{"kind":"slide","id":"sl/vk9ptu","slide":9,"title":"PROTOCOLO TEMPORAL","textShapes":11}
+{"kind":"shape","id":"sh/hgn29gr2","slide":9,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":9,"name":"kicker","text":"PROTOCOLO TEMPORAL","textPreview":"PROTOCOLO TEMPORAL","textChars":18,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":9,"name":"title","text":"Treino, validação e teste — sem olhar o futuro","textPreview":"Treino, validação e teste — sem olhar o futuro","textChars":46,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/s36hcrmh","slide":9,"name":"train","bbox":[100,244,756,120]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":9,"name":"val","bbox":[856,244,162,120]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":9,"name":"test","bbox":[1018,244,162,120]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":9,"name":"train-t","text":"TREINO\n70% • 13.713","textPreview":"TREINO | 70% • 13.713","textChars":19,"textLines":2,"bbox":[120,268,716,70]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":9,"name":"val-t","text":"VALIDAÇÃO\n15% • 2.938","textPreview":"VALIDAÇÃO | 15% • 2.938","textChars":21,"textLines":2,"bbox":[864,266,146,74]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":9,"name":"test-t","text":"TESTE\n15% • 2.939","textPreview":"TESTE | 15% • 2.939","textChars":17,"textLines":2,"bbox":[1026,266,146,74]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":9,"name":"bullet-0","bbox":[180,440,12,12]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":9,"name":"bullet-text-0","text":"Treino aprende os pesos","textPreview":"Treino aprende os pesos","textChars":23,"textLines":1,"bbox":[208,430,902,44]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":9,"name":"bullet-1","bbox":[180,500,12,12]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":9,"name":"bullet-text-1","text":"Validação escolhe arquitetura e época","textPreview":"Validação escolhe arquitetura e época","textChars":37,"textLines":1,"bbox":[208,490,902,44]}
+{"kind":"shape","id":"sh/hcrmhk3q","slide":9,"name":"bullet-2","bbox":[180,560,12,12]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":9,"name":"bullet-text-2","text":"Teste mede generalização uma única vez","textPreview":"Teste mede generalização uma única vez","textChars":38,"textLines":1,"bbox":[208,550,902,44]}
+{"kind":"textbox","id":"sh/z61032ls","slide":9,"name":"scale","text":"Padronização calculada somente no treino.","textPreview":"Padronização calculada somente no treino.","textChars":41,"textLines":1,"bbox":[310,620,660,32]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":9,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":9,"name":"page","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/vk9ptu","slide":9,"text":"Explique os papéis separadamente. O teste não participa da escolha do modelo. A padronização usa média e desvio do treino e apenas aplica esses valores aos demais conjuntos. Isso evita vazamento. A ordem cronológica deixa o trecho mais recente como teste."}
+{"kind":"slide","id":"sl/26dyiu","slide":10,"title":"EXPERIMENTOS","textShapes":20}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":10,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":10,"name":"kicker","text":"EXPERIMENTOS","textPreview":"EXPERIMENTOS","textChars":12,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/7u54zido","slide":10,"name":"title","text":"Como a rede foi treinada e otimizada?","textPreview":"Como a rede foi treinada e otimizada?","textChars":37,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":10,"name":"step0","bbox":[70,210,190,190]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":10,"name":"num0","text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[132,226,66,58]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":10,"name":"stxt0","text":"3 arquiteturas","textPreview":"3 arquiteturas","textChars":14,"textLines":1,"bbox":[88,306,154,62]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":10,"name":"arrow0","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[266,272,36,46]}
+{"kind":"shape","id":"sh/wval87ed","slide":10,"name":"step1","bbox":[308,210,190,190]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":10,"name":"num1","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[370,226,66,58]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":10,"name":"stxt1","text":"3 sementes","textPreview":"3 sementes","textChars":10,"textLines":1,"bbox":[326,306,154,62]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":10,"name":"arrow1","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[504,272,36,46]}
+{"kind":"shape","id":"sh/3itgfmlk","slide":10,"name":"step2","bbox":[546,210,190,190]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":10,"name":"num2","text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[608,226,66,58]}
+{"kind":"textbox","id":"sh/lwval87e","slide":10,"name":"stxt2","text":"até 80 épocas","textPreview":"até 80 épocas","textChars":13,"textLines":1,"bbox":[564,306,154,62]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":10,"name":"arrow2","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[742,272,36,46]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":10,"name":"step3","bbox":[784,210,190,190]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":10,"name":"num3","text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[846,226,66,58]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":10,"name":"stxt3","text":"early stopping","textPreview":"early stopping","textChars":14,"textLines":1,"bbox":[802,306,154,62]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":10,"name":"arrow3","text":"→","textPreview":"→","textChars":1,"textLines":1,"bbox":[980,272,36,46]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":10,"name":"step4","bbox":[1022,210,190,190]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":10,"name":"num4","text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1084,226,66,58]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":10,"name":"stxt4","text":"menor RMSE","textPreview":"menor RMSE","textChars":10,"textLines":1,"bbox":[1040,306,154,62]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":10,"name":"nine","text":"9 rodadas independentes","textPreview":"9 rodadas independentes","textChars":23,"textLines":1,"bbox":[340,458,600,56]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":10,"name":"explain","text":"Repetir sementes mede a sensibilidade à inicialização aleatória dos pesos.","textPreview":"Repetir sementes mede a sensibilidade à inicialização aleatória dos pesos.","textChars":74,"textLines":1,"bbox":[205,536,870,48]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":10,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":10,"name":"page","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/26dyiu","slide":10,"text":"Mostre que otimização não significa testar infinitas opções. Foram três arquiteturas e três sementes, totalizando nove rodadas. Early stopping interrompe após dez épocas sem melhoria e recupera o melhor estado. A configuração vencedora foi escolhida pelo RMSE de validação, nunca pelo teste."}
+{"kind":"slide","id":"sl/gbqale","slide":11,"title":"DIAGNÓSTICO","textShapes":9}
+{"kind":"shape","id":"sh/2x4nap4r","slide":11,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":11,"name":"kicker","text":"DIAGNÓSTICO","textPreview":"DIAGNÓSTICO","textChars":11,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":11,"name":"title","text":"Curva de aprendizado: o modelo realmente aprende?","textPreview":"Curva de aprendizado: o modelo realmente aprende?","textChars":49,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/6psfil0r","slide":11,"name":"callout","bbox":[860,176,330,350]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":11,"name":"c1","text":"Leitura do gráfico","textPreview":"Leitura do gráfico","textChars":18,"textLines":1,"bbox":[892,204,270,38]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":11,"name":"bullet-0","bbox":[894,278,12,12]}
+{"kind":"textbox","id":"sh/v6psfil0","slide":11,"name":"bullet-text-0","text":"Erro cai rapidamente no início","textPreview":"Erro cai rapidamente no início","textChars":30,"textLines":1,"bbox":[922,268,236,44]}
+{"kind":"shape","id":"sh/2lszqtcj","slide":11,"name":"bullet-1","bbox":[894,356,12,12]}
+{"kind":"textbox","id":"sh/szqtcj6t","slide":11,"name":"bullet-text-1","text":"Validação estabiliza perto da melhor época","textPreview":"Validação estabiliza perto da melhor época","textChars":42,"textLines":1,"bbox":[922,346,236,44]}
+{"kind":"shape","id":"sh/lkjm1cfa","slide":11,"name":"bullet-2","bbox":[894,434,12,12]}
+{"kind":"textbox","id":"sh/at47y1kr","slide":11,"name":"bullet-text-2","text":"Parada antecipada reduz sobreajuste","textPreview":"Parada antecipada reduz sobreajuste","textChars":35,"textLines":1,"bbox":[922,424,236,44]}
+{"kind":"textbox","id":"sh/3ex0nuxc","slide":11,"name":"best","text":"Melhor época: 28","textPreview":"Melhor época: 28","textChars":16,"textLines":1,"bbox":[892,536,270,34]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":11,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":11,"name":"page","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"image","id":"im/yxobm58z","slide":11,"name":"","alt":"Curvas de loss de treino e RMSE de validação","bbox":[70,138,760,500]}
+{"kind":"notes","id":"nt/gbqale","slide":11,"text":"A linha de treino mostra a função de perda interna; a linha de validação está em Wh e orienta a escolha. O ganho é rápido nas primeiras épocas e depois diminui. A melhor época foi 28 para a configuração selecionada. Não confunda menor loss de treino com melhor generalização."}
+{"kind":"slide","id":"sl/cddvut","slide":12,"title":"AVALIAÇÃO FINAL","textShapes":19}
+{"kind":"shape","id":"sh/2lszqtcj","slide":12,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/d8bat47y","slide":12,"name":"kicker","text":"AVALIAÇÃO FINAL","textPreview":"AVALIAÇÃO FINAL","textChars":15,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/knih4byh","slide":12,"name":"title","text":"Resultados no conjunto de teste","textPreview":"Resultados no conjunto de teste","textChars":31,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":12,"name":"mlp-title","text":"MLP selecionada","textPreview":"MLP selecionada","textChars":15,"textLines":1,"bbox":[90,160,490,38]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":12,"name":"base-title","text":"Persistência","textPreview":"Persistência","textChars":12,"textLines":1,"bbox":[700,160,490,38]}
+{"kind":"textbox","id":"sh/d0z61032","slide":12,"name":"lab0","text":"MAE","textPreview":"MAE","textChars":3,"textLines":1,"bbox":[90,230,130,46]}
+{"kind":"textbox","id":"sh/kf6dcbul","slide":12,"name":"mv0","text":"37,98 Wh","textPreview":"37,98 Wh","textChars":8,"textLines":1,"bbox":[230,230,300,46]}
+{"kind":"textbox","id":"sh/vixczed8","slide":12,"name":"blab0","text":"MAE","textPreview":"MAE","textChars":3,"textLines":1,"bbox":[700,230,130,46]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":12,"name":"bv0","text":"26,72 Wh","textPreview":"26,72 Wh","textChars":8,"textLines":1,"bbox":[840,230,300,46]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":12,"name":"lab1","text":"RMSE","textPreview":"RMSE","textChars":4,"textLines":1,"bbox":[90,335,130,46]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":12,"name":"mv1","text":"69,61 Wh","textPreview":"69,61 Wh","textChars":8,"textLines":1,"bbox":[230,335,300,46]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":12,"name":"blab1","text":"RMSE","textPreview":"RMSE","textChars":4,"textLines":1,"bbox":[700,335,130,46]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":12,"name":"bv1","text":"66,79 Wh","textPreview":"66,79 Wh","textChars":8,"textLines":1,"bbox":[840,335,300,46]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":12,"name":"lab2","text":"R²","textPreview":"R²","textChars":2,"textLines":1,"bbox":[90,440,130,46]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":12,"name":"mv2","text":"0,415","textPreview":"0,415","textChars":5,"textLines":1,"bbox":[230,440,300,46]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":12,"name":"blab2","text":"R²","textPreview":"R²","textChars":2,"textLines":1,"bbox":[700,440,130,46]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":12,"name":"bv2","text":"0,461","textPreview":"0,461","textChars":5,"textLines":1,"bbox":[840,440,300,46]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":12,"name":"result","bbox":[170,570,940,62]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":12,"name":"result-text","text":"Resultado honesto: a referência simples superou a MLP neste horizonte de 10 minutos.","textPreview":"Resultado honesto: a referência simples superou a MLP neste horizonte de 10 minutos.","textChars":84,"textLines":1,"bbox":[194,579,892,44]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":12,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":12,"name":"page","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/cddvut","slide":12,"text":"Explique cada métrica: MAE é o erro absoluto típico; RMSE penaliza erros grandes; R² mede a variabilidade explicada. Menor MAE e RMSE são melhores; maior R² é melhor. A persistência prevê que o próximo consumo será igual ao atual. Ela venceu a MLP, um resultado negativo importante e não uma falha a esconder."}
+{"kind":"slide","id":"sl/9yv17q","slide":13,"title":"ANÁLISE CRÍTICA","textShapes":9}
+{"kind":"shape","id":"sh/bi9s36hc","slide":13,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/032lszqt","slide":13,"name":"kicker","text":"ANÁLISE CRÍTICA","textPreview":"ANÁLISE CRÍTICA","textChars":15,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/tovahoza","slide":13,"name":"title","text":"O que o gráfico revela?","textPreview":"O que o gráfico revela?","textChars":23,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/bulwval8","slide":13,"name":"analysis","bbox":[870,156,340,430]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":13,"name":"analysis-title","text":"Interpretação","textPreview":"Interpretação","textChars":13,"textLines":1,"bbox":[904,184,274,38]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":13,"name":"bullet-0","bbox":[906,250,12,12]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":13,"name":"bullet-text-0","text":"A rede acompanha o nível geral","textPreview":"A rede acompanha o nível geral","textChars":30,"textLines":1,"bbox":[934,240,242,44]}
+{"kind":"shape","id":"sh/byhgn29g","slide":13,"name":"bullet-1","bbox":[906,322,12,12]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":13,"name":"bullet-text-1","text":"Picos raros são suavizados","textPreview":"Picos raros são suavizados","textChars":26,"textLines":1,"bbox":[934,312,242,44]}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":13,"name":"bullet-2","bbox":[906,394,12,12]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":13,"name":"bullet-text-2","text":"Há mudança de comportamento no trecho de teste","textPreview":"Há mudança de comportamento no trecho de teste","textChars":46,"textLines":1,"bbox":[934,384,242,44]}
+{"kind":"shape","id":"sh/gvy90je9","slide":13,"name":"bullet-3","bbox":[906,466,12,12]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":13,"name":"bullet-text-3","text":"Complexidade não garante superioridade","textPreview":"Complexidade não garante superioridade","textChars":38,"textLines":1,"bbox":[934,456,242,44]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":13,"name":"source","text":"Projeto executado com energydata_complete.csv","textPreview":"Projeto executado com energydata_complete.csv","textChars":45,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":13,"name":"page","text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"image","id":"im/b6xkf6dc","slide":13,"name":"","alt":"Consumo real e previsto na primeira semana do teste","bbox":[56,136,790,500]}
+{"kind":"notes","id":"nt/9yv17q","slide":13,"text":"A MLP acompanha tendências, mas frequentemente suaviza picos. O RMSE sente bastante esses erros grandes. Também há indícios de mudança de distribuição ao longo do tempo: a casa mais recente não se comporta exatamente como no treino. Destaque que uma baseline forte é indispensável para saber se a complexidade vale a pena."}
+{"kind":"slide","id":"sl/t1si3p","slide":14,"title":"FECHAMENTO","textShapes":15}
+{"kind":"shape","id":"sh/al87ed8b","slide":14,"name":"top-accent","bbox":[0,0,1280,12]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":14,"name":"kicker","text":"FECHAMENTO","textPreview":"FECHAMENTO","textChars":10,"textLines":1,"bbox":[64,32,420,24]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":14,"name":"title","text":"Conclusões e próximos passos","textPreview":"Conclusões e próximos passos","textChars":28,"textLines":1,"bbox":[64,62,1152,68]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":14,"name":"conclusion","bbox":[64,144,720,430]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":14,"name":"conc-title","text":"O que aprendemos","textPreview":"O que aprendemos","textChars":16,"textLines":1,"bbox":[102,174,640,42]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":14,"name":"bullet-0","bbox":[106,252,12,12]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":14,"name":"bullet-text-0","text":"MLP aprende relações não lineares entre sensores","textPreview":"MLP aprende relações não lineares entre sensores","textChars":48,"textLines":1,"bbox":[134,242,592,44]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":14,"name":"bullet-1","bbox":[106,320,12,12]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":14,"name":"bullet-text-1","text":"Memória temporal precisa ser criada por defasagens","textPreview":"Memória temporal precisa ser criada por defasagens","textChars":50,"textLines":1,"bbox":[134,310,592,44]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":14,"name":"bullet-2","bbox":[106,388,12,12]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":14,"name":"bullet-text-2","text":"Divisão cronológica evita uma avaliação otimista","textPreview":"Divisão cronológica evita uma avaliação otimista","textChars":48,"textLines":1,"bbox":[134,378,592,44]}
+{"kind":"shape","id":"sh/yxobm58z","slide":14,"name":"bullet-3","bbox":[106,456,12,12]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":14,"name":"bullet-text-3","text":"A persistência venceu no horizonte de 10 minutos","textPreview":"A persistência venceu no horizonte de 10 minutos","textChars":48,"textLines":1,"bbox":[134,446,592,44]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":14,"name":"next","bbox":[824,144,392,430]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":14,"name":"next-title","text":"Próximos passos","textPreview":"Próximos passos","textChars":15,"textLines":1,"bbox":[858,174,324,40]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":14,"name":"bullet-0","bbox":[860,252,12,12]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":14,"name":"bullet-text-0","text":"Validação walk-forward","textPreview":"Validação walk-forward","textChars":22,"textLines":1,"bbox":[888,242,282,44]}
+{"kind":"shape","id":"sh/gfmlkjm1","slide":14,"name":"bullet-1","bbox":[860,320,12,12]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":14,"name":"bullet-text-1","text":"Prever 30 ou 60 minutos","textPreview":"Prever 30 ou 60 minutos","textChars":23,"textLines":1,"bbox":[888,310,282,44]}
+{"kind":"shape","id":"sh/t83itgfm","slide":14,"name":"bullet-2","bbox":[860,388,12,12]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":14,"name":"bullet-text-2","text":"Comparar LSTM e boosting","textPreview":"Comparar LSTM e boosting","textChars":24,"textLines":1,"bbox":[888,378,282,44]}
+{"kind":"shape","id":"sh/b2hwfyxo","slide":14,"name":"bullet-3","bbox":[860,456,12,12]}
+{"kind":"textbox","id":"sh/mhk3q5o7","slide":14,"name":"bullet-text-3","text":"Mais residências e estações","textPreview":"Mais residências e estações","textChars":27,"textLines":1,"bbox":[888,446,282,44]}
+{"kind":"textbox","id":"sh/twra5gbq","slide":14,"name":"final","text":"Ciência não é provar que o modelo vence. É medir, comparar e explicar por quê.","textPreview":"Ciência não é provar que o modelo vence. É medir, comparar e explicar por quê.","textChars":78,"textLines":1,"bbox":[150,618,980,38]}
+{"kind":"textbox","id":"sh/4byhgn29","slide":14,"name":"source","text":"Projeto acadêmico — reprodução adaptada e resultados reproduzíveis","textPreview":"Projeto acadêmico — reprodução adaptada e resultados reproduzíveis","textChars":66,"textLines":1,"bbox":[64,674,1040,20]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":14,"name":"page","text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1160,670,56,24]}
+{"kind":"notes","id":"nt/t1si3p","slide":14,"text":"Feche retomando a pergunta inicial. A MLP funciona como ferramenta de modelagem, mas não venceu a persistência neste cenário. Isso mostra maturidade experimental: escolher protocolo correto, incluir baseline e interpretar limitações. Sugira horizontes mais longos, validação walk-forward e comparação com LSTM, random forest e gradient boosting."}

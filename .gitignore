@@ -1,0 +1,6 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+#Especificação do trablho 
+daa\Especificação do Trabalho Prático.docx
