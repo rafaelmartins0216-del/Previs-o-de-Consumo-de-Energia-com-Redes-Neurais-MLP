@@ -19,7 +19,6 @@ em `resultados/`; o segundo script cria `RELATORIO.md` com os números medidos.
 
 - `analise_mlp_energia.py`: experimento completo e extensamente comentado.
 - `gerar_relatorio.py`: relatório reproduzível baseado no JSON de resultados.
-- `ROTEIRO_APRESENTACAO.md`: títulos, tópicos e fala sugerida para 14 slides.
 - `energydata_complete.csv`: dataset original, mantido inalterado.
 
 ## Referências
